@@ -1,0 +1,16 @@
+classDiagram
+class BaseConnector{
+        #any logger
+        #any destination
+        #object queryParam
+        +initialize(any destination) void
+        +isInitialized() boolean
+        #saveMonitoringInformation(string integrationName, IntegrationStatusEnum status, string errorMessage)
+        #saveIntegrationStatus(string entity, IntegrationStatusEnum status) Promise<string>
+        #createIntegrationError(IntegrationError integrationError) Promise<void>
+        #closeIntegrationErrors(string entity) Promise<void>
+        #logAndThrow(string msg, any e, PPBRCustomFields customFields) void
+        #logWarn(any e) void
+        #invokeApiAndLog(OpenApiRequestBuilder api, string destinationName) Promise<HttpResponse>
+}
+BaseRepository <|-- BaseConnector

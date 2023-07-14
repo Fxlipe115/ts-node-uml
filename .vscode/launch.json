@@ -1,0 +1,29 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "inputs": [
+    {
+      "id": "file",
+      "type": "promptString",
+      "description": "Project root file path",
+      "default": "examples/greeter.ts"
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Example",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "ts-node",
+      "runtimeArgs": ["-r", "tsconfig-paths/register", "src/index.ts"],
+
+      "args": ["${input:file}"],
+
+      "cwd": "${workspaceRoot}",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"]
+    }
+  ]
+}

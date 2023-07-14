@@ -1,0 +1,53 @@
+{
+  "name": "ts-node-uml",
+  "version": "1.0.0",
+  "description": "Generate UML class diagram for given TypeScript node project",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "node -p \"'export const LIB_VERSION = ' + JSON.stringify(require('./package.json').version) + ';'\" > src/version.ts",
+    "build": "rimraf ./dist && tsc",
+    "prestart": "npm run build",
+    "start": "node dist/index.js",
+    "start:dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "prettier": "prettier --check src/**/*.ts",
+    "prettier:fix": "prettier --write src/**/*.ts"
+  },
+  "keywords": [
+    "UML",
+    "ast",
+    "node",
+    "ts",
+    "typescript"
+  ],
+  "author": "Felipe Graeff",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/argparse": "^2.0.10",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.44.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^3.0.0",
+    "rimraf": "^5.0.1",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "argparse": "^2.0.1",
+    "path": "^0.12.7",
+    "queue-typescript": "^1.0.1",
+    "typescript-parser": "file:../node-typescript-parser"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all lint:fix prettier:fix"
+    }
+  }
+}
