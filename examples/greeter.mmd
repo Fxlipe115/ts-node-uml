@@ -1,23 +1,23 @@
 classDiagram
-class IGreeter{
-        <<Interface>>
-        +greet(string param, number param2) string*
-}
 class AbstractGreeter{
-        <<Abstract>>
-        -number coisa
-        +greet(string param, number param2) string
-        +abstractGreet() void*
+	<<Abstract>>
+	-number coisa
+	+greet(string param, number param2) string
+	+abstractGreet() void*
 }
-IGreeter <|.. AbstractGreeter : implements
+IGreeter <|.. AbstractGreeter
 class Greeter{
-        +string greeting
-        +any pblc
-        -any prvt
-        #any ptctd
-        +any d
-        +any e
-        +abstractGreet() void
-        +greet(string param, number param2) string
+	+string greeting
+	+any pblc
+	-any prvt
+	#any ptctd
+	+any d
+	+any e
+	+abstractGreet() void
+	+greet(string param, number param2) string
 }
-AbstractGreeter <|-- Greeter : extends
+AbstractGreeter <|-- Greeter
+class IGreeter{
+	<<Interface>>
+	+greet(string param, number param2) string*
+}

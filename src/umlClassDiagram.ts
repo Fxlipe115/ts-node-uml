@@ -9,7 +9,7 @@ import {
   TypescriptParser,
 } from 'typescript-parser';
 import { UmlInterface } from './umlInterface';
-import { dirname } from 'path';
+import { dirname, normalize, resolve, isAbsolute } from 'path';
 
 export class UmlClassDiagram implements UmlEntity {
   private projectFiles: Queue<File>;
@@ -26,7 +26,10 @@ export class UmlClassDiagram implements UmlEntity {
     const filePathWithExt = filePath.endsWith('.ts')
       ? filePath
       : filePath + '.ts';
-    const file = await this.parser.parseFile(filePathWithExt, rootPath);
+    const fullPath = isAbsolute(filePathWithExt)
+      ? filePathWithExt
+      : normalize(`${resolve(rootPath)}/${filePathWithExt}`);
+    const file = await this.parser.parseFile(fullPath, '');
     if (file) {
       this.projectFiles.enqueue(file);
     }

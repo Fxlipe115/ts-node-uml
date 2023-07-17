@@ -15,7 +15,7 @@ const args = argParser.parse_args();
 
 async function f() {
   const umlClassDiagram: UmlClassDiagram = new UmlClassDiagram();
-  await umlClassDiagram.includeProjectFile(args.file, 'workspace root');
+  await umlClassDiagram.includeProjectFile(args.file, '');
 
   console.log(await umlClassDiagram.toMMD());
 }

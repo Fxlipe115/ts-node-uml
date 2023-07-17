@@ -1,6 +1,4 @@
-interface IGreeter {
-  greet(param: string, param2: number): string;
-}
+import { IGreeter } from './interfaces/greeter';
 
 abstract class AbstractGreeter implements IGreeter {
   greet(param: string, param2: number): string {
